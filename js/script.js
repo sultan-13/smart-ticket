@@ -77,9 +77,9 @@ for (const btn of allBtn) {
     }
     const selectedBtn = event.target;
     selectedBtn.setAttribute("disabled", true);
+    selectedBtn.classList.remove("hover:bg-slate-400");
     selectedBtn.classList.add("bg-primary");
     selectedBtn.classList.add("text-white");
-    selectedBtn.classList.remove("hover:bg-slate-400");
     const currentTotal = getValueById("total-price");
     const ticketPrice = getValueById("seat-price");
     const seatLeft = getValueById("seat-left");
