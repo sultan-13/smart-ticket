@@ -1,4 +1,5 @@
 let count = 0;
+flag = 0;
 const offerBtn = document.getElementById("offer");
 const goToSection = document.getElementById("paribahan");
 const nextBtn = document.getElementById("next-btn");
@@ -9,19 +10,17 @@ const info = document.getElementById("name");
 const applyBtn = document.getElementById("apply-btn");
 const cuponContainer = document.getElementById("cupon-container");
 
-
 // scroll section
 
 offerBtn.addEventListener("click", function () {
   goToSection.scrollIntoView({ behavior: "smooth" });
 });
 
-
 // next button
 
 document.getElementById("phone").addEventListener("keyup", function (event) {
   const phoneNumber = event.target.value;
-  if (count > 0 && phoneNumber.length === 11) {
+  if (flag > 0 && phoneNumber.length === 11) {
     nextBtn.removeAttribute("disabled");
   }
 });
@@ -30,6 +29,8 @@ function setInner() {
   info.value = "";
   phone.value = "";
   email.value = "";
+  flag = 0;
+  nextBtn.setAttribute("disabled", true);
 }
 
 // apply button
@@ -68,6 +69,7 @@ document.getElementById("apply-btn").addEventListener("click", function () {
 for (const btn of allBtn) {
   btn.addEventListener("click", function (event) {
     count++;
+    flag++;
     if (count === 4) {
       applyBtn.removeAttribute("disabled");
     }
@@ -105,7 +107,7 @@ for (const btn of allBtn) {
     mainContent.appendChild(p3);
     parent.appendChild(mainContent);
     const phoneNumber = document.getElementById("phone").value;
-    if (count > 0 && phoneNumber.length === 11) {
+    if (flag > 0 && phoneNumber.length === 11) {
       nextBtn.removeAttribute("disabled");
     }
   });
